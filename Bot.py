@@ -125,7 +125,6 @@ async def nuke(ctx):
             pass
         
     e = await bot.create_channel(ctx.message.server,"Thanos", type=discord.ChannelType.text)
-    await bot.say(("{} Channels Have Been Nuked").format(x))
     await bot.send_file(e,"thanus.png")
     
     
