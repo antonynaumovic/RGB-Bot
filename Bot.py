@@ -197,6 +197,7 @@ async def on_member_remove(member):
         
 @bot.command(pass_context=True)
 async def nuke(ctx):
+    x=0
     await bot.say("3")
     await asyncio.sleep(1)
     await bot.say("2")
@@ -204,6 +205,11 @@ async def nuke(ctx):
     await bot.say("1")
     await asyncio.sleep(1)
     await bot.say("0")
+    for i in member.server.channel:
+        x=x+1
+        await bot.say("nuking {}").format(str(i))
+    await bot.say("{} Channels Have Been Nuked").format(x)
+        
     
         
 @bot.command(pass_context=True)
