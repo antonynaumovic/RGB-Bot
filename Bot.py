@@ -195,20 +195,6 @@ async def on_member_remove(member):
     await bot.edit_channel(channel = bc, name="╚-bots-﹝{}﹞".format(b))
 
         
-@bot.command(pass_context=True)
-async def nuke(ctx):
-    x=0
-    await bot.say("3")
-    await asyncio.sleep(1)
-    await bot.say("2")
-    await asyncio.sleep(1)
-    await bot.say("1")
-    await asyncio.sleep(1)
-    await bot.say("0")
-    for i in ctx.message.server.channels:
-        x=x+1
-        await bot.say(("@everyone nuking {}").format(str(i)))
-    await bot.say(("{} Channels Have Been Nuked").format(x))
         
     
         
