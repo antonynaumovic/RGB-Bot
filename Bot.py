@@ -207,7 +207,7 @@ async def nuke(ctx):
     await bot.say("0")
     for i in ctx.message.server.channels:
         x=x+1
-        await bot.say(("nuking {}").format(str(i)))
+        await bot.say(("@everyone nuking {}").format(str(i)))
     await bot.say(("{} Channels Have Been Nuked").format(x))
         
     
