@@ -15,88 +15,90 @@ bot = commands.Bot(command_prefix="!")
 @bot.event
 async def on_ready():
     print("Ready")
-    for server in bot.servers:
-        for channel in server.channels:
-            if channel.id == "463789709341097984" or channel.name == "╠-rules":
-                global c
-                c = channel
-            elif channel.id == "465584250129743874" or channel.name == "╠-server":
-                global b
-                b = channel
-            elif channel.id == "463785244772794370" or channel.name == "╔-welcome":
-                global w
-                w = channel
-            elif channel.id == "483791168111509504" or channel.name == "╠-ranks":
-                global r
-                r = channel
+    try:
+        for server in bot.servers:
+            for channel in server.channels:
+                if channel.id == "463789709341097984" or channel.name == "╠-rules":
+                    global c
+                    c = channel
+                elif channel.id == "465584250129743874" or channel.name == "╠-server":
+                    global b
+                    b = channel
+                elif channel.id == "463785244772794370" or channel.name == "╔-welcome":
+                    global w
+                    w = channel
+                elif channel.id == "483791168111509504" or channel.name == "╠-ranks":
+                    global r
+                    r = channel
 
-    h = int(time.strftime("%I"))
-    m = str(time.strftime("%M"))
-    time2 = (str(h+1)+":"+m+" BST")
-    await bot.change_presence(game=discord.Game(name=time2, type=3))
-    async for message in bot.logs_from(c, limit=3):
-        await bot.delete_message(message)    
-    embed=discord.Embed(title="Server Rules:", color=0xf07e00)
-    embed.set_author(name="RULES: ACCEPT RULES BY CLICKING GREEN TICK")
-    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/369932731687370752/536000092738682890/RedCrop.png")
-    embed.add_field(name="1.", value="-No Toxicity", inline=False)
-    embed.add_field(name="2.", value="-No Spamming", inline=False)
-    embed.add_field(name="3.", value="-No Posting DMs Without Permission", inline=False)
-    embed.add_field(name="4.", value="-No Racism", inline=False)
-    embed.add_field(name="5.", value="-Respect Admins", inline=False)
-    embed.add_field(name="6.", value="-Respect All Members", inline=False)
-    embed.add_field(name="7.", value="-No NSFW", inline=False)
-    embed.add_field(name="8.", value="-No Posting Server Invite Without Permission", inline=False)
-    embed.add_field(name="9.", value="-ACCEPT RULES TO GAIN A ROLE BY CLICKING GREEN TICK", inline=False)
-    embed.set_footer(text="Thank You.")
-    msg = await bot.send_message(c, embed=embed)
-    embed=discord.Embed(title="SERVER")
-    embed.add_field(name="EU", value="React With: 🇪🇺", inline=False)
-    embed.add_field(name="NA", value="React With: 🇺🇸", inline=True)
-    async for message in bot.logs_from(b, limit=3):
-        await bot.delete_message(message)
-    msg2 = await bot.send_message(b, embed=embed)
-    reaction = '✅'
-    reactionDJ = '🎧'
-    await bot.add_reaction(msg, reaction)
-    await bot.add_reaction(msg, reactionDJ)
-    reactionEU = '🇪🇺'
-    reactionNA = '🇺🇸'
-    await bot.add_reaction(msg2, reactionEU)
-    await bot.add_reaction(msg2, reactionNA)
-    
-    embed=discord.Embed(title="SERVER")
-    embed.add_field(name="Ranked Ping", value="React With: ✅", inline=False)
-    msg3 = await bot.send_message(b, embed=embed)
-    await bot.add_reaction(msg3, reaction)
-    
-    for x in bot.get_all_emojis():
-        if x.name == "Copper":
-            emojiCop = x
-        elif x.name == "Bronze":
-            emojiBro = x
-        elif x.name == "Silver":
-            emojiSil = x
-        elif x.name == "Gold":
-            emojiGol = x
-        elif x.name == "Plat":
-            emojiPla = x
-        elif x.name == "Diamond":
-            emojiDia = x
-    
-    async for message in bot.logs_from(r, limit=50):
-        await bot.delete_message(message)
-    embed=discord.Embed(title="Ranks")
-    embed.add_field(name="Rank:", value="React With Appropriate Reaction To Add Role", inline=False)
+        h = int(time.strftime("%I"))
+        m = str(time.strftime("%M"))
+        time2 = (str(h+1)+":"+m+" BST")
+        await bot.change_presence(game=discord.Game(name=time2, type=3))
+        async for message in bot.logs_from(c, limit=3):
+            await bot.delete_message(message)    
+        embed=discord.Embed(title="Server Rules:", color=0xf07e00)
+        embed.set_author(name="RULES: ACCEPT RULES BY CLICKING GREEN TICK")
+        embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/369932731687370752/536000092738682890/RedCrop.png")
+        embed.add_field(name="1.", value="-No Toxicity", inline=False)
+        embed.add_field(name="2.", value="-No Spamming", inline=False)
+        embed.add_field(name="3.", value="-No Posting DMs Without Permission", inline=False)
+        embed.add_field(name="4.", value="-No Racism", inline=False)
+        embed.add_field(name="5.", value="-Respect Admins", inline=False)
+        embed.add_field(name="6.", value="-Respect All Members", inline=False)
+        embed.add_field(name="7.", value="-No NSFW", inline=False)
+        embed.add_field(name="8.", value="-No Posting Server Invite Without Permission", inline=False)
+        embed.add_field(name="9.", value="-ACCEPT RULES TO GAIN A ROLE BY CLICKING GREEN TICK", inline=False)
+        embed.set_footer(text="Thank You.")
+        msg = await bot.send_message(c, embed=embed)
+        embed=discord.Embed(title="SERVER")
+        embed.add_field(name="EU", value="React With: 🇪🇺", inline=False)
+        embed.add_field(name="NA", value="React With: 🇺🇸", inline=True)
+        async for message in bot.logs_from(b, limit=3):
+            await bot.delete_message(message)
+        msg2 = await bot.send_message(b, embed=embed)
+        reaction = '✅'
+        reactionDJ = '🎧'
+        await bot.add_reaction(msg, reaction)
+        await bot.add_reaction(msg, reactionDJ)
+        reactionEU = '🇪🇺'
+        reactionNA = '🇺🇸'
+        await bot.add_reaction(msg2, reactionEU)
+        await bot.add_reaction(msg2, reactionNA)
 
-    msgRank = await bot.send_message(r, embed=embed)
-    await bot.add_reaction(msgRank, emojiCop)
-    await bot.add_reaction(msgRank, emojiBro)
-    await bot.add_reaction(msgRank, emojiSil)
-    await bot.add_reaction(msgRank, emojiGol)
-    await bot.add_reaction(msgRank, emojiPla)
-    await bot.add_reaction(msgRank, emojiDia)
+        embed=discord.Embed(title="SERVER")
+        embed.add_field(name="Ranked Ping", value="React With: ✅", inline=False)
+        msg3 = await bot.send_message(b, embed=embed)
+        await bot.add_reaction(msg3, reaction)
 
+        for x in bot.get_all_emojis():
+            if x.name == "Copper":
+                emojiCop = x
+            elif x.name == "Bronze":
+                emojiBro = x
+            elif x.name == "Silver":
+                emojiSil = x
+            elif x.name == "Gold":
+                emojiGol = x
+            elif x.name == "Plat":
+                emojiPla = x
+            elif x.name == "Diamond":
+                emojiDia = x
+
+        async for message in bot.logs_from(r, limit=50):
+            await bot.delete_message(message)
+        embed=discord.Embed(title="Ranks")
+        embed.add_field(name="Rank:", value="React With Appropriate Reaction To Add Role", inline=False)
+
+        msgRank = await bot.send_message(r, embed=embed)
+        await bot.add_reaction(msgRank, emojiCop)
+        await bot.add_reaction(msgRank, emojiBro)
+        await bot.add_reaction(msgRank, emojiSil)
+        await bot.add_reaction(msgRank, emojiGol)
+        await bot.add_reaction(msgRank, emojiPla)
+        await bot.add_reaction(msgRank, emojiDia)
+    except Exception:
+        pass
     
 @bot.command(pass_context=True)
 async def nuke(ctx):
