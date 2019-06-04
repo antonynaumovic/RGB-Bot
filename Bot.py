@@ -102,7 +102,7 @@ async def on_ready():
     
 @bot.command(pass_context=True)
 async def nuke(ctx):
-    x=0
+    h=0
     await bot.say("3")
     await asyncio.sleep(1)
     await bot.say("2")
